@@ -6,6 +6,8 @@ import auth from '../../../features/auth/server/route'
 const app = new Hono().basePath('/api')
 
 const routes = app.route('/auth', auth);
+console.log(routes); // Example usage to avoid the ESLint warning
+
 
 export const GET = handle(app)
 export const POST = handle(app)
