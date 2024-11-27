@@ -7,27 +7,26 @@ import {  useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-
-const formSchema = z.object({
-    name: z.string().min(1,'Required'),
-    email: z.string().email(),
-    password: z.string().min(6,'Minimum of 6 characters required')
-})
-
-const onSubmit = (loginData: z.infer<typeof formSchema>) => {
-    console.log("Form Values:", loginData);
-  };
+import { registerSchema } from "../schemas";
+import { useRegister } from "../api/use-register";
 
 export const SignUpCard = () => {
-    const form = useForm<z.infer<typeof formSchema>>({
+    const { mutate } = useRegister()
 
-        resolver : zodResolver(formSchema),
+    const form = useForm<z.infer<typeof registerSchema>>({
+        resolver : zodResolver(registerSchema),
         defaultValues: {
             name: '',
             email: '',
             password: '',
         }
     })
+    
+const onSubmit = (registerData: z.infer<typeof registerSchema>) => {
+    mutate({json :registerData})
+    console.log("Form Values:", registerData);
+  };
+
     return(
         <Card className="w-[90vw] h-full md:w-[486px] border-none shadow-none" >
             <CardHeader className="flex items-center justify-center text-center px-6">
