@@ -3,15 +3,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export const SignInCard = () => {
-  const { mutate } = useLogin()
+  const { mutate } = useLogin();
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -22,7 +25,7 @@ export const SignInCard = () => {
   });
 
   const onSubmit = (loginData: z.infer<typeof loginSchema>) => {
-    mutate({json :loginData})
+    mutate({ json: loginData });
     console.log("Form Values:", loginData);
   };
 
@@ -40,14 +43,10 @@ export const SignInCard = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                    <FormControl>
-                        <Input
-                            {...field}
-                            placeholder="Enter email address"
-                            disabled={false}
-                        />                        
-                    </FormControl>
-                    <FormMessage />
+                  <FormControl>
+                    <Input {...field} placeholder="Enter email address" disabled={false} />
+                  </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -56,15 +55,23 @@ export const SignInCard = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                    <FormControl>
-                        <Input
-                            {...field}
-                            type="password"
-                            placeholder="Enter password"
-                            disabled={false}
-                        />
-                    </FormControl>
-                    <FormMessage />
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        {...field}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter password"
+                        disabled={false}
+                      />
+                      <div
+                        className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                      >
+                        {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                      </div>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -75,12 +82,7 @@ export const SignInCard = () => {
         </Form>
       </CardContent>
       <CardContent className="p-6">
-        <Button
-          disabled={false}
-          size="lg"
-          className="w-full"
-          variant="secondary"
-        >
+        <Button disabled={false} size="lg" className="w-full" variant="secondary">
           <FcGoogle />
           Login with Google
         </Button>
