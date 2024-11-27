@@ -1,9 +1,6 @@
-// 'use client'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-// import { createAdminClient } from "@/lib/appwrite";
-
 
 export default function Home() {
   // console.log(createAdminClient, "hello")

@@ -3,7 +3,7 @@ import { zValidator } from '@hono/zod-validator'
 import { loginSchema, registerSchema } from "../schemas";
 import { createAdminClient } from '@/lib/appwrite';
 import { ID } from 'node-appwrite';
-import { setCookie } from 'hono/cookie'
+import { deleteCookie, setCookie } from 'hono/cookie'
 import { AUTH_COOKIE } from '../constants';
 // import { redirect } from "next/navigation";
 
@@ -14,9 +14,18 @@ const app = new Hono()
     zValidator('json', loginSchema),
     async (c) => {
         const {email, password} = c.req.valid('json')
-        console.log({email, password})
+        const { account } = await createAdminClient()
+        const session = await account.createEmailPasswordSession(email, password);
+
+        setCookie(c, AUTH_COOKIE, session.secret, {
+            path: "/",
+            httpOnly: true,
+            sameSite: "strict",
+            secure: true,
+            maxAge: 60*60*24*30
+        })
         
-        return c.json({email, password})
+        return c.json({success: true})
 })
 .post(
     '/register',
@@ -26,7 +35,7 @@ const app = new Hono()
         const {name, email, password} = c.req.valid('json')
 
         const { account } = await createAdminClient()
-        const user = await account.create(
+        await account.create(
             ID.unique(),
             email,
             password,
@@ -41,16 +50,14 @@ const app = new Hono()
             secure: true,
             maxAge: 60*60*24*30
         })
-
-        // cookies().set("my-custom-session", session.secret, {
-        //     path: "/",
-        //     httpOnly: true,
-        //     sameSite: "strict",
-        //     secure: true,
-        //   });
         
-        
-        return c.json({success: true, data: user})
+        return c.json({success: true})
 })
+.post(
+    '/logout', (c) => {
+        deleteCookie(c, AUTH_COOKIE)
+        return c.json({success: true})
+
+ })
 
 export default app
