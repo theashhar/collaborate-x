@@ -1,14 +1,29 @@
-// import Navbar from "@/components/Navbar";
-import Navbar from "@/components/Navbar";
-// import { Button } from "@/components/ui/button";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
-import Link from "next/link";
-// import { Input } from "@/components/ui/input";
-// import { Select } from "@/components/ui/select";
 
-export default function Home() {
-  // console.log(createAdminClient, "hello")
+
+import Navbar from "@/components/Navbar";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import RedirectButton from "@/features/auth/components/redirect-button";
+// import { getCurrent } from "@/features/auth/actions";
+import Image from "next/image";
+// import Link from "next/link";
+// import { redirect } from "next/navigation";
+
+
+export default async function Home() {
+
+
+  // const user = await getCurrent()
+
+  // const redirectUser = () => {
+  //   if(user){
+  //     redirect('/sign-in')
+  //   } else {
+  //     redirect('/sign-up')
+
+  //   }
+
+  // }
+
   return (<>
   <main className=" mx-auto max-w-screen-2xl p-4">
     <Navbar />
@@ -16,13 +31,10 @@ export default function Home() {
         <ContainerScroll
           titleComponent={
             <>
-            <Link href='/sign-up' >
-              <button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-full border border-slate-600 bg-[linear-gradient(110deg,#17181a,45%,#2e3747,55%,#17181a)] bg-[length:200%_100%] px-16 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 z-50 text-xl">
-              {/* <Button variant='primary' > */}
+              {/* <button onClick={() => redirectUser} className="inline-flex h-12 animate-shimmer items-center justify-center rounded-full border border-slate-600 bg-[linear-gradient(110deg,#17181a,45%,#2e3747,55%,#17181a)] bg-[length:200%_100%] px-16 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 z-50 text-xl">
                 Start For Free Today
-              {/* </Button> */}
-             </button>            
-            </Link>
+             </button>             */}
+             <RedirectButton />
 
               <h1 className="text-4xl font-semibold text-black dark:text-white py-6 my-12">
                 Manage Your Team With <br />
