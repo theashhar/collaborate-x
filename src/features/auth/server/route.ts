@@ -70,9 +70,6 @@ const app = new Hono()
         deleteCookie(c, AUTH_COOKIE)
         await account.deleteSession('current')
         return c.json({success: true})
-        console.log(account)
-
-
  })
 
 export default app

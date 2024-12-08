@@ -5,7 +5,7 @@ import { InferRequestType, InferResponseType } from "hono";
 type RequestType = InferRequestType<typeof client.api.auth.logout['$post']>
 type ResponseType = InferResponseType<typeof client.api.auth.logout['$post']>;
 
-export const useLogin =  () => {
+export const useLogout =  () => {
     const queryClient = useQueryClient()
     const mutation = useMutation<
     ResponseType,

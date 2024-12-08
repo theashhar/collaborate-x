@@ -3,14 +3,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
-import { usePathname } from 'next/navigation'
+// import { Button } from './ui/button'
+// import { usePathname } from 'next/navigation'
+import AvatarOrLogin from './avatar-or-login'
 // import logo from '../../assets/collaborateXLogo.svg'
 
 // import { ModeToggle } from './modeToggle'
 
 export default function Navbar() {
-    const pathname = usePathname()
+    // const pathname = usePathname()
 
   return (
          <nav className="flex justify-between items-center gap-2">
@@ -32,11 +33,8 @@ export default function Navbar() {
             <Link href='#'>Enterprise</Link>
           </li> */}
         </ul>
-          <Button asChild variant='secondary' >
-            <Link href={pathname !== '/sign-in' ? 'sign-in' : 'sign-up'} >
-              {pathname === '/sign-in' ? 'Sign Up' : 'Login'}
-            </Link>
-          </Button>
+
+          <AvatarOrLogin />
         </nav>
   )
 }
