@@ -11,10 +11,13 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 export const SignInCard = () => {
   const { mutate } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -26,7 +29,8 @@ export const SignInCard = () => {
 
   const onSubmit = (loginData: z.infer<typeof loginSchema>) => {
     mutate({ json: loginData });
-    console.log("Form Values:", loginData);
+    // console.log("Form Values:", loginData);
+    router.push('/dashboard'); // Client-side navigation
   };
 
   return (

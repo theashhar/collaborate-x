@@ -11,10 +11,12 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { registerSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 export const SignUpCard = () => {
   const { mutate } = useRegister();
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -27,7 +29,8 @@ export const SignUpCard = () => {
 
   const onSubmit = (registerData: z.infer<typeof registerSchema>) => {
     mutate({ json: registerData });
-    console.log("Form Values:", registerData);
+    // console.log("Form Values:", registerData);
+    router.push('/dashboard'); // Client-side navigation
   };
 
   return (

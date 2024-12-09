@@ -77,7 +77,7 @@ const AvatarButton = ({ user }: { user: User }) => {
             onSuccess: () => {
               router.push('/')
             }
-        })} className="text-red-600 flex items-center gap-2">
+        })} className="text-red-600 flex items-center gap-2 cursor-pointer">
           <LogOut size={16} /> Logout
         </DropdownMenuItem>
       </DropdownMenuContent>

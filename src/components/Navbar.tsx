@@ -15,7 +15,9 @@ export default function Navbar() {
 
   return (
          <nav className="flex justify-between items-center gap-2">
-          <Image src={'/collaborateXLogo.svg'} width={200} height={100} alt='logo'/>
+          <Link href='/' >
+            <Image src={'/collaborateXLogo.svg'} width={200} height={100} alt='logo'/>
+          </Link>
           <ul className='h-1 flex items-center gap-6 list-none mr-[120px]'>
           <li>
             <Link href='https://github.com/theashhar/collaborate-x'>Github</Link>
