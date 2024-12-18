@@ -17,6 +17,11 @@ CollaborateX is a modern SaaS platform for streamlined project management and te
 - **Authentication**: AppWrite
 - **Styling**: ShadCN UI, Tailwind CSS
 
+## Fixed Versions
+
+- **NextJs**: 14.2.14
+- **ShadCn**: 2.1.0
+
 ## Getting Started
 1. Clone the repository:
    ```bash
