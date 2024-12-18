@@ -14,7 +14,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 
 export const SignInCard = () => {
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
@@ -79,7 +79,7 @@ export const SignInCard = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={false} size="lg" className="w-full">
+            <Button type="submit" disabled={isPending} size="lg" className="w-full">
               Login
             </Button>
           </form>

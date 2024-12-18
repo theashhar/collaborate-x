@@ -16,7 +16,7 @@ const RedirectButton = () => {
 
     if (isLoading) {
         return (
-          <div className="flex justify-center items-center h-10 w-10">
+          <div className="flex justify-center items-center h-10">
             <div className="animate-spin h-5 w-5 border-4 border-gray-300 border-t-transparent rounded-full"></div>
           </div>
         );

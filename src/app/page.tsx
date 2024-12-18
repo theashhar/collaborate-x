@@ -1,6 +1,6 @@
 
 
-import Navbar from "@/components/Navbar";
+import NavbarHome from "@/components/NavbarHome";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import RedirectButton from "@/features/auth/components/redirect-button";
 // import { getCurrent } from "@/features/auth/actions";
@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (<>
   <main className=" mx-auto max-w-screen-2xl p-4">
-    <Navbar />
+    <NavbarHome />
       <section>
         <ContainerScroll
           titleComponent={

@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/app/dashboard/(pages)/members/page.tsx", ".next/types/app/dashboard/(pages)/home/page.tsx", ".next/types/app/dashboard/(pages)/mytasks/page.tsx", ".next/types/app/dashboard/(pages)/settings/page.tsx"],
   "exclude": ["node_modules"]
 }

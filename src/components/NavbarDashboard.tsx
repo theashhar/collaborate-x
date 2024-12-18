@@ -10,15 +10,15 @@ import AvatarOrLogin from './avatar-or-login'
 
 // import { ModeToggle } from './modeToggle'
 
-export default function Navbar() {
+export default function NavbarDashboard() {
     // const pathname = usePathname()
 
   return (
-         <nav className="flex justify-between items-center gap-2">
+         <nav className="flex w-full justify-between items-center gap-2">
           <Link href='/' >
             <Image src={'/collaborateXLogo.svg'} width={200} height={100} alt='logo'/>
           </Link>
-          <ul className='h-1 flex items-center gap-6 list-none mr-[120px]'>
+          {/* <ul className='h-1 flex items-center gap-6 list-none mr-[120px]'>
           <li>
             <Link href='https://github.com/theashhar/collaborate-x'>Github</Link>
           </li>
@@ -28,13 +28,7 @@ export default function Navbar() {
           <li>
             <Link href='https://github.com/theashhar/collaborate-x?tab=readme-ov-file#readme'>Documentation</Link>
           </li>
-          {/* <li>
-            <Link href='#'>Documentation</Link>
-          </li>
-          <li>
-            <Link href='#'>Enterprise</Link>
-          </li> */}
-        </ul>
+        </ul> */}
 
           <AvatarOrLogin />
         </nav>
