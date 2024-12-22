@@ -16,7 +16,7 @@ export default function NavbarDashboard() {
   return (
          <nav className="flex w-full justify-between items-center gap-2">
           <Link href='/' >
-            <Image src={'/collaborateXLogo.svg'} width={200} height={100} alt='logo'/>
+            <Image src={'/logoIcon.svg'} width={50} height={40} alt='logo'/>
           </Link>
           {/* <ul className='h-1 flex items-center gap-6 list-none mr-[120px]'>
           <li>

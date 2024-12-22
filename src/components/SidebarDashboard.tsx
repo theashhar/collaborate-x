@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { House, Zap, Settings, Blocks, CreditCard, CloudDownload, FileCheck2, LucideMousePointerClick, GitBranch, Database } from 'lucide-react';
+import { House, Zap, Settings, Users, ListTodo, LucideMousePointerClick, GitBranch, Database } from 'lucide-react';
 import { Separator } from "@/components/ui/separator"
 // import { ModeToggle } from '../modeToggle'
 
@@ -28,16 +28,14 @@ const SidebarDashboard = () => {
   // Array of icons with their respective names
   const icons = [
     { name: 'House', component: House, tooltip: 'Home', link:'/dashboard' },
-    { name: 'Zap', component: Zap, tooltip: 'Workflows', link:'/workflows' },
-    { name: 'Settings', component: Settings, tooltip: 'Settings', link:'/settings' },
-    { name: 'Blocks', component: Blocks, tooltip: 'Category', link:'/connections' },
-    { name: 'CreditCard', component: CreditCard, tooltip: 'Payment', link:'/billing' },
-    { name: 'CloudDownload', component: CloudDownload, tooltip: 'Cloud Download', link:'/templates' },
-    { name: 'FileCheck2', component: FileCheck2, tooltip: 'Clipboard', link:'/' },
+    { name: 'list-todo', component: ListTodo, tooltip: 'My Tasks', link:'/dashboard/mytasks' },
+    { name: 'Settings', component: Settings, tooltip: 'Settings', link:'/dashboard/settings' },
+    { name: 'users', component: Users, tooltip: 'Members', link:'/dashboard/members' },
+    { name: 'Zap', component: Zap, tooltip: 'Workflows', link:'/dashboard' },
   ];
 //   const pathName = usePathname()
   return (<>
-    <nav className='dark:bg-black h-full flex justify-between items-start gap-12 px-4 py-4 overflow-y-scroll no-scrollbar'>
+    <nav className='dark:bg-black bg-neutral-100 h-full flex justify-between items-start gap-12 px-4 py-4 overflow-y-scroll no-scrollbar scrollbar-hide'>
       <div className='flex items-center justify-center flex-col gap-6'>
       <Link className='flex pb-8'
         href='/'>
@@ -59,7 +57,7 @@ const SidebarDashboard = () => {
                 onFocus={() => handleIconClick(name as IconName)}
                 className={`rounded-md p-1 cursor-pointer transition-colors ${
                   activeIcon === name
-                    ? 'bg-violet-700 dark:bg-violet-700'
+                    ? 'bg-themeColor-500 dark:themeColor-500'
                     : 'dark:bg-black dark:hover:bg-violet-950'
                 }`}
               >
