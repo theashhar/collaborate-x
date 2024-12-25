@@ -3,28 +3,26 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
+  House, Zap, Settings, Users, ListTodo
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
 import { TeamSwitcher } from "@/components/team-switcher"
+// import logo from'../assets/collaborateXLogo.svg'
 import {
-  Sidebar,
+  SidebarShadCn,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebarShadCn"
 
 // This is sample data.
 const data = {
@@ -52,29 +50,29 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Home",
       url: "#",
-      icon: SquareTerminal,
+      icon: House,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+      // items: [
+      //   {
+      //     title: "History",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Starred",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Settings",
+      //     url: "#",
+      //   },
+      // ],
     },
     {
-      title: "Models",
+      title: "My Tasks",
       url: "#",
-      icon: Bot,
+      icon: ListTodo,
       items: [
         {
           title: "Genesis",
@@ -91,9 +89,28 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Settings",
       url: "#",
-      icon: BookOpen,
+      icon: Settings,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Members",
+      url: "#",
+      icon: Users,
       items: [
         {
           title: "Introduction",
@@ -114,9 +131,9 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title: "Workflows",
       url: "#",
-      icon: Settings2,
+      icon: Zap,
       items: [
         {
           title: "General",
@@ -156,9 +173,9 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof SidebarShadCn>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <SidebarShadCn collapsible="icon" {...props} variant="inset" >
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
@@ -170,6 +187,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
-    </Sidebar>
+    </SidebarShadCn>
   )
 }

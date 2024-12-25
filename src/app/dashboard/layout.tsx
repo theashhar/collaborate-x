@@ -1,5 +1,8 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import NavbarDashboard from "@/components/NavbarDashboard"
+import SidebarDemo from "@/components/SidebarDashboardAceternity"
+// import SidebarDashboard from "@/components/SidebarDashboard"
+// import SidebarDashboardAceternity from "@/components/SidebarDashboardAceternity"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,7 +16,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebarShadCn"
 
 interface DashboardLayoutProps {
   children :React.ReactNode
@@ -23,6 +26,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {  return (<>
   <div className="flex w-full px-4 py-2 ">
   <NavbarDashboard />
 </div>
+        {/* <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+          {children}
+          <div >
+            <SidebarDemo />
+          </div>
+        </div> */}
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
@@ -34,7 +43,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {  return (<>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="#">
-                    Building Your Application
+                    Dashboard
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
@@ -46,13 +55,6 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {  return (<>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
-
           {children}
         </div>
       </SidebarInset>
