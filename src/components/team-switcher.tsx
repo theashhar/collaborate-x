@@ -19,7 +19,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebarShadCn"
 import Image from "next/image"
-import logoIcon from "../assets/collaborateXLogo.svg";
+// import logoIcon from "../assets/collaborateXLogo.svg";
 
 export function TeamSwitcher({
   teams,

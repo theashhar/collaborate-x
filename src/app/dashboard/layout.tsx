@@ -1,6 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import NavbarDashboard from "@/components/NavbarDashboard"
-import SidebarDemo from "@/components/SidebarDashboardAceternity"
+// import SidebarDemo from "@/components/SidebarDashboardAceternity"
 // import SidebarDashboard from "@/components/SidebarDashboard"
 // import SidebarDashboardAceternity from "@/components/SidebarDashboardAceternity"
 import {

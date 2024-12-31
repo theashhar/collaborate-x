@@ -70,7 +70,7 @@ export default function SidebarDemo() {
                 href: "#",
                 icon: (
                   <Image
-                    // src="https://assets.aceternity.com/manu.png"
+                    src="https://media.licdn.com/dms/image/v2/D5603AQGPDsll-giGHw/profile-displayphoto-shrink_100_100/B56ZQZIn7kHQAU-/0/1735588480934?e=1741219200&v=beta&t=bYruCOUaibpProje0BwOnd-IfDcr7vVG2jCJPbRODmI"
                     className="h-7 w-7 flex-shrink-0 rounded-full"
                     width={50}
                     height={50}
