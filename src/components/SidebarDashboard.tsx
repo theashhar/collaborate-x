@@ -1,4 +1,11 @@
 'use client'
+
+//Obsolete
+//Obsolete
+//Obsolete
+//Obsolete
+//Obsolete
+
 // import Image from 'next/image'
 import Link from 'next/link'
 // import { usePathname } from 'next/navigation'
@@ -27,7 +34,7 @@ const SidebarDashboard = () => {
 
   // Array of icons with their respective names
   const icons = [
-    { name: 'House', component: House, tooltip: 'Home', link:'/dashboard' },
+    { name: 'House', component: House, tooltip: 'dashboard', link:'/dashboard' },
     { name: 'list-todo', component: ListTodo, tooltip: 'My Tasks', link:'/dashboard/mytasks' },
     { name: 'Settings', component: Settings, tooltip: 'Settings', link:'/dashboard/settings' },
     { name: 'users', component: Users, tooltip: 'Members', link:'/dashboard/members' },

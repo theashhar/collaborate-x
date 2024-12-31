@@ -1,7 +1,14 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
+//Obsolete
+//Obsolete
+//Obsolete
+//Obsolete
+//Obsolete
+
+
+// import Image from 'next/image'
+// import Link from 'next/link'
 import React from 'react'
 // import { Button } from './ui/button'
 // import { usePathname } from 'next/navigation'
@@ -14,10 +21,10 @@ export default function NavbarDashboard() {
     // const pathname = usePathname()
 
   return (
-         <nav className="flex w-full justify-between items-center gap-2">
-          <Link href='/' >
+         <nav className="flex w-full justify-end items-center gap-2">
+          {/* <Link href='/' >
             <Image src={'/logoIcon.svg'} width={50} height={40} alt='logo'/>
-          </Link>
+          </Link> */}
           {/* <ul className='h-1 flex items-center gap-6 list-none mr-[120px]'>
           <li>
             <Link href='https://github.com/theashhar/collaborate-x'>Github</Link>
