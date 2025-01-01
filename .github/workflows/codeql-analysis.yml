@@ -1,0 +1,57 @@
+# Advanced CodeQL Workflow for TypeScript and JavaScript
+name: "CodeQL Advanced"
+
+on:
+  push:
+    branches: [ "master" ] # Replace with your default branch, if it's not "master"
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: '34 7 * * 0' # Weekly scheduled scan (Sunday at 7:34 AM)
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    permissions:
+      # Required for all workflows
+      security-events: write
+
+      # Required to fetch internal or private CodeQL packs
+      packages: read
+
+      # Only required for workflows in private repositories
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: javascript-typescript
+            build-mode: none
+        # Supported CodeQL languages: 'c-cpp', 'csharp', 'go', 'java-kotlin',
+        # 'javascript-typescript', 'python', 'ruby', 'swift'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
+        config-file: .github/codeql-analysis.yml
+        disable-default-queries: true
+
+    - if: matrix.build-mode == 'manual'
+      shell: bash
+      run: |
+        echo 'Replace this with the commands to build your code if you are using "manual" build mode.'
+        exit 1
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
