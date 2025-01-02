@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLogout } from '@/features/auth/api/use-logout';
 import { useCurrent } from '@/features/auth/api/use-current';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import { usePathname,useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,10 +16,18 @@ import {
 } from './ui/dropdown-menu';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { LogOut } from 'lucide-react';
+import { useQueryClient } from '@tanstack/react-query';
 
 const AvatarOrLogin = () => {
   const pathname = usePathname();
   const { data: user, isLoading } = useCurrent();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (user) {
+      queryClient.setQueryData(['current'], user); // Cache user data
+    }
+  }, [user, queryClient]);
 
   if (isLoading) {
     return (
@@ -53,7 +61,15 @@ interface User {
 
 const AvatarButton = ({ user }: { user: User }) => {
   const { mutate: logout } = useLogout();
-  const router = useRouter()
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout({}, {
+      onSuccess: () => {
+        router.push('/'); // Navigate to the home page on successful logout
+      },
+    });
+  };
 
   return (
     <DropdownMenu>
@@ -73,11 +89,9 @@ const AvatarButton = ({ user }: { user: User }) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          onClick={() => logout({}, {
-            onSuccess: () => {
-              router.push('/')
-            }
-        })} className="text-red-600 flex items-center gap-2 cursor-pointer">
+          onClick={handleLogout}
+          className="text-red-600 flex items-center gap-2 cursor-pointer"
+        >
           <LogOut size={16} /> Logout
         </DropdownMenuItem>
       </DropdownMenuContent>

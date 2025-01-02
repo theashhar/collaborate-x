@@ -55,7 +55,7 @@ import {
         title: "dashboard",
         url: "/dashboard",
         icon: House,
-        isActive: true,
+        // isActive: true,
       },
       {
         title: "My Tasks",

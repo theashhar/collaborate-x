@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebarShadCn";
 import { sidebarData } from "@/constants/sidebarData";
 import AvatarOrLogin from "@/components/avatar-or-login";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+// import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -41,16 +41,17 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         <SidebarInset>
           <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
             <div className="flex items-center gap-2 px-4">
-              <TooltipProvider>
+              {/* <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
                     <SidebarTrigger className="-ml-1" />
-                  </TooltipTrigger>
-                  <TooltipContent>
+                    </TooltipTrigger>
+                    <TooltipContent>
                     <p>ctrl+k</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+                    </TooltipContent>
+                    </Tooltip>
+                    </TooltipProvider> */}
+                    <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
               <Breadcrumb>
                 <BreadcrumbList>
@@ -61,7 +62,8 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                   <BreadcrumbItem>
                     {currentPage && (
                       <BreadcrumbPage>{currentPage.title}</BreadcrumbPage>
-                    )}
+                      )}
+                      {/* <BreadcrumbPage>Title</BreadcrumbPage> */}
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>

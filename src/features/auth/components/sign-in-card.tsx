@@ -11,13 +11,10 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 
 export const SignInCard = () => {
-  const { mutate, isPending } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
-
+  const { mutate, isPending, isError, error } = useLogin();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -29,8 +26,6 @@ export const SignInCard = () => {
 
   const onSubmit = (loginData: z.infer<typeof loginSchema>) => {
     mutate({ json: loginData });
-    // console.log("Form Values:", loginData);
-    router.push('/dashboard'); // Client-side navigation
   };
 
   return (
@@ -84,6 +79,12 @@ export const SignInCard = () => {
             </Button>
           </form>
         </Form>
+        {/* Display error message if there's an error */}
+        {isError && (
+          <div className="mt-4 text-red-500">
+            An error occurred: {error?.message || "Unknown error"}
+          </div>
+        )}
       </CardContent>
       <CardContent className="p-6">
         <Button disabled={false} size="lg" className="w-full" variant="secondary">
